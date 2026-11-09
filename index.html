@@ -297,29 +297,33 @@
   .addr { margin-top: 8px; font-size: 16px; line-height: 1.4; color: var(--stone); }
   .close .gallery {
     position: relative;
-    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1.2fr .8fr;
-    gap: 14px; height: 1080px; padding: 28px 28px 28px 8px; min-height: 0;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    grid-template-rows: 1fr 1fr .9fr;
+    gap: 12px; height: 1080px; padding: 24px 24px 24px 6px; min-height: 0;
   }
   .close .gallery figure {
     margin: 0; min-height: 0; box-shadow: none;
   }
-  .close .gallery .hero { --fd: .16s; }
-  .close .gallery .up { --fd: .28s; }
-  .close .gallery .day { grid-column: 1 / -1; --fd: .4s; }
+  .close .gallery .hero { grid-row: 1 / 3; --fd: .14s; }
+  .close .gallery .up { --fd: .26s; }
+  .close .gallery .air { --fd: .36s; }
+  .close .gallery .crown { grid-column: 1 / -1; --fd: .46s; }
   .close .gallery img {
     display: block; width: 100%; height: 100%; object-fit: cover;
     filter: saturate(.95) contrast(1.06) brightness(.94);
     transition: filter .8s var(--ease-out-expo), transform 1s var(--ease-out-expo);
   }
-  .close .gallery .hero img { object-position: center 10%; }
-  .close .gallery .up img { object-position: center 18%; }
-  .close .gallery .day img { object-position: center 35%; }
+  .close .gallery .hero img { object-position: center 8%; }
+  .close .gallery .up img { object-position: center 12%; }
+  .close .gallery .air img { object-position: center 40%; }
+  .close .gallery .crown img { object-position: center 30%; }
   .close .gallery::before {
-    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 48px; z-index: 3; pointer-events: none;
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 42px; z-index: 3; pointer-events: none;
     background: linear-gradient(90deg, #07111F, rgba(7, 17, 31, 0));
   }
-  .close .gallery .day figcaption.tag {
-    padding: 40px 24px 20px; font-size: 12px; letter-spacing: .16em;
+  .close .gallery .crown figcaption.tag {
+    padding: 36px 22px 18px; font-size: 12px; letter-spacing: .16em;
   }
 
   /* ---------- figures ---------- */
@@ -824,9 +828,10 @@
     </div>
     <div class="gallery">
       <figure class="hero"><img src="media/eurosky-notte.jpg" alt="Torre Eurosky di notte"></figure>
-      <figure class="up"><img src="media/eurosky-dalbasso.jpg" alt="Eurosky vista dal basso"></figure>
-      <figure class="day">
-        <img src="media/eurosky-giorno.jpg" alt="Eurosky di giorno">
+      <figure class="up"><img src="media/eurosky-dalbasso.jpg" alt="Eurosky vista dal basso con corona illuminata"></figure>
+      <figure class="air"><img src="media/eurosky-aerea.jpg" alt="Eurosky vista aerea notturna"></figure>
+      <figure class="crown">
+        <img src="media/eurosky-corona.jpg" alt="Corona e ali solari di Eurosky">
         <figcaption class="tag">Eurosky, Roma · Viale Giorgio Ribotta 21 · 00144</figcaption>
       </figure>
     </div>
