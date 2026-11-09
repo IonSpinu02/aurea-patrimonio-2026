@@ -295,19 +295,31 @@
   .close hr { width: 100%; max-width: 760px; border: 0; border-top: 1px solid rgba(210, 172, 114, .45); margin: 28px 0 18px; }
   .who { font-family: var(--serif); font-size: 28px; font-weight: 600; }
   .addr { margin-top: 8px; font-size: 16px; line-height: 1.4; color: var(--stone); }
-  .close .tower { margin: 0; height: 1080px; --fd: .18s; }
-  .close .tower img {
-    display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 12%;
-    filter: saturate(.95) contrast(1.08) brightness(.94);
+  .close .gallery {
+    position: relative;
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1.2fr .8fr;
+    gap: 14px; height: 1080px; padding: 28px 28px 28px 8px; min-height: 0;
   }
-  .close .tower::after {
-    content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
-    background:
-      linear-gradient(90deg, #07111F 0%, rgba(7, 17, 31, .55) 12%, rgba(7, 17, 31, 0) 34%),
-      linear-gradient(180deg, rgba(7, 17, 31, .25) 0%, rgba(7, 17, 31, 0) 22%, rgba(7, 17, 31, 0) 70%, rgba(7, 17, 31, .55) 100%);
+  .close .gallery figure {
+    margin: 0; min-height: 0; box-shadow: none;
   }
-  .close .tower figcaption.tag {
-    padding: 48px 28px 28px; font-size: 13px; letter-spacing: .18em;
+  .close .gallery .hero { --fd: .16s; }
+  .close .gallery .up { --fd: .28s; }
+  .close .gallery .day { grid-column: 1 / -1; --fd: .4s; }
+  .close .gallery img {
+    display: block; width: 100%; height: 100%; object-fit: cover;
+    filter: saturate(.95) contrast(1.06) brightness(.94);
+    transition: filter .8s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+  }
+  .close .gallery .hero img { object-position: center 10%; }
+  .close .gallery .up img { object-position: center 18%; }
+  .close .gallery .day img { object-position: center 35%; }
+  .close .gallery::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 48px; z-index: 3; pointer-events: none;
+    background: linear-gradient(90deg, #07111F, rgba(7, 17, 31, 0));
+  }
+  .close .gallery .day figcaption.tag {
+    padding: 40px 24px 20px; font-size: 12px; letter-spacing: .16em;
   }
 
   /* ---------- figures ---------- */
@@ -320,8 +332,9 @@
     box-shadow: inset 0 0 0 1px rgba(210, 172, 114, .25);
     transition: box-shadow .6s var(--ease-out-expo);
   }
-  .close .tower, .archive .deposit, .trio article figure, .quad article figure { box-shadow: none; }
-  .close .tower::before, .archive .deposit::before { display: none; }
+  .close .gallery figure, .archive .deposit, .trio article figure, .quad article figure { box-shadow: none; }
+  .close .gallery figure::before { box-shadow: inset 0 0 0 1px rgba(210, 172, 114, .22); }
+  .archive .deposit::before { display: none; }
 
   .scan figure::after {
     content: ""; position: absolute; left: 0; right: 0; top: 0; height: 100%; z-index: 2; pointer-events: none;
@@ -516,10 +529,12 @@
     .side figure:hover { box-shadow: 0 30px 60px -28px rgba(148, 101, 40, .5), 0 0 0 1px rgba(210, 172, 114, .45); }
     .side figure:hover img { filter: saturate(1.06) contrast(1.06); }
     .side:hover figure:not(:hover) img { filter: saturate(.55) brightness(.84); }
+    .close .gallery:hover figure:not(:hover) img { filter: saturate(.55) brightness(.78); }
+    .close .gallery figure:hover img { filter: saturate(1.05) contrast(1.06) brightness(1); }
   }
   @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
     :is(.card, .stages article, .quad article, .quals article, .isos span):hover { translate: 0 -6px; }
-    .side figure:hover img, .quad article:hover figure img { transform: scale(1.04); }
+    .side figure:hover img, .quad article:hover figure img, .close .gallery figure:hover img { transform: scale(1.04); }
     :is(.funds, .center3) article:hover h2 { translate: 12px 0; }
     .hero:hover img { transform: scale(1.015); }
   }
@@ -807,10 +822,14 @@
       <p class="addr">Amministratore unico e legale rappresentante · P. IVA 14322151003</p>
       <p class="addr">M.DS S.r.l. Unipersonale</p>
     </div>
-    <figure class="tower">
-      <img src="media/eurosky.jpg" alt="Torre Eurosky, Roma">
-      <figcaption class="tag">Eurosky, Roma · Viale Giorgio Ribotta 21 · 00144</figcaption>
-    </figure>
+    <div class="gallery">
+      <figure class="hero"><img src="media/eurosky-notte.jpg" alt="Torre Eurosky di notte"></figure>
+      <figure class="up"><img src="media/eurosky-dalbasso.jpg" alt="Eurosky vista dal basso"></figure>
+      <figure class="day">
+        <img src="media/eurosky-giorno.jpg" alt="Eurosky di giorno">
+        <figcaption class="tag">Eurosky, Roma · Viale Giorgio Ribotta 21 · 00144</figcaption>
+      </figure>
+    </div>
     <p class="speaker">Chiusura operativa: la sede è in Eurosky a Roma. Contatti diretti per approfondire il progetto pilota e valutare insieme fattibilità, impatto culturale e sviluppo del primo caso dimostrativo.</p>
   </section>
 
